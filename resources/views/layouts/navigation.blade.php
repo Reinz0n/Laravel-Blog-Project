@@ -1,3 +1,31 @@
+<style>
+    .create-account {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 0.3s, stroke 0.3s;
+        color: lightgrey;
+    }
+    
+    .create-account:hover {
+        color: white;
+    }
+
+    .login {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 0.3s, stroke 0.3s;
+        color: lightgrey;
+    }
+
+    .login:hover {
+        color: white;
+    }
+</style>
+
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,6 +46,7 @@
                     </x-primary-button>
                 </a>
 
+                @auth
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="right" width="48">
@@ -51,6 +80,16 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
+                @endauth
+
+                @guest
+                <a href="{{ route('register') }}" class="create-account hidden sm:flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-200 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none transition ease-in-out duration-150" >
+                    Create an Account
+                </a>
+                <a href="{{ route('login') }}" class="login hidden sm:flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-200 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none transition ease-in-out duration-150">
+                    Login
+                </a>
+                @endguest
 
                 <!-- Hamburger -->
                 <div class="-me-2 flex items-center sm:hidden">
@@ -65,6 +104,7 @@
         </div>
     </div>
 
+    @auth
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
 
@@ -93,4 +133,5 @@
             </div>
         </div>
     </div>
+    @endauth
 </nav>

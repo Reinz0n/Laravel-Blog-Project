@@ -21,6 +21,14 @@
         .my-button:hover svg {
             stroke: white;
         }
+
+        .profile-show {
+            text-decoration: none;
+        }
+
+        .profile-show:hover {
+            text-decoration: underline;
+        }
     </style>
     <div class="py-4">
         <div class="sm:px-6 lg:px-8" style="max-width: 75%; margin: auto;">
@@ -30,17 +38,12 @@
 
                 <!-- User Avatar -->
                 <div class="flex gap-4" style="gap: 1rem;">
-                    @if ($post->user->image)
-                        <img src="{{  $post->user->imageUrl() }}" alt="{{ $post->user->name }}"
-                            class="w-12 h-12 rounded-full" style="width: 3rem; height: 3rem;">
-                    @else
-                        <img src="https://cdn12.picryl.com/photo/2016/12/31/head-the-dummy-avatar-people-b61cdb-1024.png"
-                            alt="Dummy avatar" class="w-12 h-12 rounded-full" style="width: 3rem; height: 3rem;">
-                    @endif
-
+                    <x-user-avatar :user="$post->user"/>
                     <div>
                         <div class="flex gap-2" style="gap: 0.5rem;">
-                            <h3>{{ $post->user->name }}</h3>
+                            <a href="{{ route('profile.show', $post->user) }}" class="profile-show">
+                                {{ $post->user->name }}
+                            </a>
                             &middot;
                             <a href="#" class="text-emerald-500" style="color: lightblue">Follow</a>
                         </div>
@@ -70,7 +73,8 @@
 
                 <!-- Category Section -->
                 <div class="mt-8" style="margin-top: 2rem;">
-                    <span class="px-4 py-2 bg-gray-800 rounded-2xl" style="padding: 1rem 0.5 rem 1rem 0.5rem; border-radius: 1rem; background-color: gray; opacity: 0.5">
+                    <span class="px-4 py-2 bg-gray-800 rounded-2xl"
+                        style="padding: 1rem 0.5 rem 1rem 0.5rem; border-radius: 1rem; background-color: gray; opacity: 0.5">
                         {{ $post->category->name }}
                     </span>
                 </div>
