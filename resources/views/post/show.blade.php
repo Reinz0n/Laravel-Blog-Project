@@ -40,13 +40,13 @@
                 <div class="flex gap-4" style="gap: 1rem;">
                     <x-user-avatar :user="$post->user"/>
                     <div>
-                        <div class="flex gap-2" style="gap: 0.5rem;">
+                        <x-follow-ctr :user="$post->user" class="flex gap-2" style="gap: 0.5rem;">
                             <a href="{{ route('profile.show', $post->user) }}" class="profile-show">
                                 {{ $post->user->name }}
                             </a>
                             &middot;
-                            <a href="#" class="text-emerald-500" style="color: lightblue">Follow</a>
-                        </div>
+                            <button class="text-emerald-500" style="color: lightblue" x-text="following ? 'Unfollow' : 'Follow'" @click="follow()"></button>
+                        </x-follow-ctr>
 
                         <div class="flex gap-2 text-sm text-gray-500">
                             {{ $post->readTime() }} min read
