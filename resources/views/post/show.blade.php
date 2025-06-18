@@ -58,7 +58,7 @@
                 <!-- End User Avatar -->
 
                 <!-- Clap Section -->
-                <x-clap-button />
+                <x-clap-button :post="$post" />
                 <!-- End Clap Section -->
 
                 <!-- Content Section-->
@@ -81,7 +81,7 @@
                 <!-- End Category Section -->
 
                 <!-- Clap Section -->
-                <x-clap-button />
+                <x-clap-button :post="$post" />
                 <!-- End Clap Section -->
             </div>
         </div>
