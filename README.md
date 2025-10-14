@@ -4,7 +4,7 @@ This Repo is used for Laravel Project Blog Web made by Reinz0n.
 
 ## Project Progress
 
-This Project is still work in progress. Estimated time completed is less than a month.
+This Project is cancelled due to not having enough time to continue. The author of this project has other projects he's working on.
 
 ## Project Goals
 
